@@ -1,5 +1,8 @@
-const electron = require('electron');
 const { app, BrowserWindow } = require('electron')
+
+require('electron-handlebars')({
+  title: 'Hello, ARMO!'
+});
 
 let win;
 
@@ -12,7 +15,7 @@ function createWindow() {
     }
   })
 
-  win.loadFile('index.html')
+  win.loadFile('index.hbs')
 
   win.webContents.openDevTools()
 
