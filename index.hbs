@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}!</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <H1 class="center">{{ title }}</H1>
+  <div class="center">
+  <button id="button" class="btn btn-secondary">Показать котика</button>
+  </div>
+  <div id="dogcontainer" class="center marg"></div>
+</body>
+
+</html>
+
+<script>
+  const container = document.getElementById("dogcontainer");
+  const button = document.getElementById('button')
+  button.addEventListener('click', async (e) => {
+    let resp = await fetch("https://api.thecatapi.com/v1/images/search?size=full")
+    console.log(resp)
+    let json = await resp.json()
+    console.log(json)
+    container.innerHTML = `<img id="img" style="width: 300px" src=${json[0].url} />`
+  })
+</script>

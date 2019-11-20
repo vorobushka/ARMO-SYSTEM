@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^7.1.2"
+  },
+  "dependencies": {
+    "electron-handlebars": "^2.0.0"
   }
 }
